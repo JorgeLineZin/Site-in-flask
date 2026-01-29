@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main_content %}
+<h2>Register</h2>
+{% block fo %}
+<form method="POST">
+    {{ form.csrf_token }}
+        
+        {{ form.username.label() }}
+        {{ form.username() }}
+        {{ form.email.label() }}
+        {{ form.email() }}
+        {{ form.password.label() }}
+        {{ form.password() }}
+        {{ form.confirm_password.label() }}
+        {{ form.confirm_password() }}
+        {{ form.button_submit() }}
+</form>
+<a href="{{ url_for('login') }}">Already have an account? Login here.</a>
+{% endblock %}
+{% endblock %}

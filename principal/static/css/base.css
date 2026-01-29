@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Playwrite+NZ+Basic:wght@100..400&display=swap");
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #d8f3c5;
+  background: linear-gradient(45deg, #d8f3c5, #128c55);
+  height: 100vh;
+}
+
+#navbar-container {
+  background-color: #4caf50;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#navbar-container ul {
+  list-style-type: none;
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  gap: 10px;
+}
+
+/* Responsividade básica */
+@media (max-width: 768px) {
+  #navbar-container ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+  }
+  #navbar-container ul li a {
+    padding: 10px 8px;
+    font-size: 1rem;
+  }
+  main,
+  header,
+  footer {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 15px;
+  }
+  #navbar-container ul li a {
+    padding: 8px 4px;
+    font-size: 0.95rem;
+  }
+}
+
+#navbar-container ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: "JetBrains Mono", monospace;
+}
+
+#navbar-container ul li :hover {
+  background-color: #45a049;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+footer a {
+  color: #5b1166;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #3e0e4f;
+}
+
+#loginBtn {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+#loginBtn:hover {
+  background-color: #45a049;
+}
+
+#registerBtn {
+  background-color: #008cba;
+  border: none;
+  color: white;
+  padding: 10px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+#registerBtn:hover {
+  background-color: #007bb5;
+}
+
+main {
+  /* padding: 20px; */
+  margin-bottom: 60px; /* Espaço para o footer fixo */
+  min-height: calc(100vh - 120px); /* Altura mínima para ocupar a tela */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+}
+
+h2 {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #330867;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  /* gap: 10px; */
+  width: 300px;
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+form label {
+  margin-bottom: 5px;
+  font-size: 25px;
+}
+
+form input {
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 18px;
+}
+
+form input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: "JetBrains Mono", monospace;
+}
+
+form input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+a {
+  font-family: "JetBrains Mono", monospace;
+  color: #330867;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
