@@ -5,11 +5,12 @@
 {% endblock %}
 
 {% block main_content %}
-<h2>Register</h2>
-{% block fo %}
-<form method="POST">
-    {{ form.csrf_token }}
-        
+<div class="form-panel">
+    <h2>Register</h2>
+    {% block fo %}
+    <form method="POST">
+        {{ form.csrf_token }}
+            
         {{ form.username.label() }}
         {{ form.username() }}
         {{ form.email.label() }}
@@ -19,7 +20,8 @@
         {{ form.confirm_password.label() }}
         {{ form.confirm_password() }}
         {{ form.button_submit() }}
-</form>
-<a href="{{ url_for('login') }}">Already have an account? Login here.</a>
-{% endblock %}
+    </form>
+    <a href="{{ url_for('login') }}">Already have an account? Login here.</a>
+    {% endblock %}
+</div>
 {% endblock %}

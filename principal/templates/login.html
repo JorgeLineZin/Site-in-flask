@@ -5,17 +5,19 @@
 {% endblock %}
 
 {% block main_content %}
-<h2>Login</h2>
-{% block fo %}
-<form method="POST">
-    {{ form.csrf_token }}
-        
+<div class="form-panel">
+    <h2>Login</h2>
+    {% block fo %}
+    <form method="POST">
+        {{ form.csrf_token }}
+            
         {{ form.email.label() }}
         {{ form.email() }}
         {{ form.password.label() }}
         {{ form.password() }}
         {{ form.button_submit() }}
-</form>
-<a href="{{ url_for('register') }}">No account? Register here</a>
-{% endblock %}
+    </form>
+    <a href="{{ url_for('register') }}">No account? Register here</a>
+    {% endblock %}
+</div>
 {% endblock %}

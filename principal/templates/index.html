@@ -1,24 +1,26 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/base.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/index.css') }}"
+/>
+{% endblock %} {% block title %} Home {% endblock %} {% block main_content %}
+<div class="auth-buttons-panel">
+  <button class="login-btn">login</button>
+  <button class="register-btn">register</button>
+</div>
 
-{% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />    
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
-{% endblock %}
-
-{% block title %}
-    Home
-{% endblock %}
-
-{% block main_content %}
-    <button id="loginBtn">login</button>
-    <button id="registerBtn">register</button>
-
-    <script>
-    document.getElementById("loginBtn").addEventListener("click", function () {
-        location.href = "{{ url_for('login') }}";
+<script>
+  document.querySelector(".login-btn").addEventListener("click", function () {
+    location.href = "{{ url_for('login') }}";
+  });
+  document
+    .querySelector(".register-btn")
+    .addEventListener("click", function () {
+      location.href = "{{ url_for('register') }}";
     });
-    document.getElementById("registerBtn").addEventListener("click", function () {
-        location.href = "{{ url_for('register') }}";
-    });
-    </script>
+</script>
 {% endblock %}
