@@ -20,6 +20,12 @@
         {{ form.confirm_password.label() }}
         {{ form.confirm_password() }}
         {{ form.button_submit() }}
+
+        {% for field, errors in form.errors.items() %}
+            {% for error in errors %}
+                <div class="error_register_duplicated">{{ error }}</div>
+            {% endfor %}
+        {% endfor %}
     </form>
     <a href="{{ url_for('login') }}">Already have an account? Login here.</a>
     {% endblock %}

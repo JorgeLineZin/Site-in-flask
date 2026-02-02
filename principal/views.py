@@ -22,7 +22,7 @@ def login():
         user = User.query.filter_by(email=formlogin.email.data).first()
         if user and bcrypt.check_password_hash(user.password, formlogin.password.data):
             login_user(user, remember=True)
-            return redirect(url_for('perfil', username=user.name))
+            return redirect(url_for('perfil', id_user=user.id))
     return render_template('login.html', form=formlogin)
 
 
@@ -40,14 +40,20 @@ def register():
         database.session.add(user)
         database.session.commit()
         login_user(user, remember=True)
-        return redirect(url_for('perfil', username=formregistro.username.data))
+        return redirect(url_for('perfil', id_user=user.id))
     return render_template('register.html', form=formregistro)
 
 
-@app.route('/perfil/<username>')
+@app.route('/perfil/<id_user>')
 @login_required
-def perfil(username):
-    return render_template('perfil.html', username=username)
+def perfil(id_user):
+    if int(id_user) == int(current_user.id):
+        return render_template('perfil.html', username=current_user)
+    else:
+        username = User.query.get(int(id_user))
+        if username is None:
+            return redirect(url_for('index'))
+        return render_template('perfil.html', username=username)
 
 
 @app.route('/logout')

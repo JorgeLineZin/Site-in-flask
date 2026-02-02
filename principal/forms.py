@@ -20,6 +20,19 @@ class FormRegistro(FlaskForm):
     button_submit = SubmitField('Register')
 
     def validate_email(self, email):
-        username = User.query.filter_by(email=email.data).first()
-        if username:
-            return ValidationError('Email already registered. Please use a different email.')
+        user = User.query.filter_by(email=email.data).first()
+        if user:
+            raise ValidationError(
+                'Email already registered. Please use a different email.')
+
+    def validate_username(self, username):
+        user = User.query.filter_by(name=username.data).first()
+        if user:
+            raise ValidationError(
+                'Username already taken. Please choose a different username.')
+
+
+class FormPost(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    content = StringField('Content', validators=[DataRequired()])
+    button_submit = SubmitField('Create Post')

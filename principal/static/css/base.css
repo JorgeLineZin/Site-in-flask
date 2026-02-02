@@ -1,60 +1,129 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Playwrite+NZ+Basic:wght@100..400&display=swap");
 
+:root {
+  /* Palette based on the background gradient: #0c224a to #e8827b */
+
+  /* Core Colors */
+  --background-gradient: linear-gradient(45deg, #0c224a, #e8827b);
+  --panel-background: rgba(
+    11,
+    20,
+    19,
+    0.9
+  ); /* Dark, semi-transparent for depth */
+  --panel-border: rgba(255, 255, 255, 0.1);
+
+  /* Text Colors */
+  --text-primary: #f0f0f0; /* Soft white for general text */
+  --text-secondary: #a8a8a8; /* Light grey for placeholders or less important text */
+  --text-accent: #e8a87b; /* A peachy orange for links and highlights */
+  --text-accent-hover: #f0c8a8; /* Lighter shade for hover effects */
+
+  /* Button & Action Colors */
+  --button-primary-bg: #e8a87b; /* Primary action button (e.g., Register) */
+  --button-primary-hover: #f0c8a8; /* Lighter hover for primary */
+  --button-secondary-bg: rgba(
+    123,
+    55,
+    63,
+    0.85
+  ); /* Kept from original, as it's a darker shade of the gradient's red */
+  --button-secondary-hover: #94424c;
+  --button-submit-bg: #3d5a80; /* A cool, contrasting blue for submit actions */
+  --button-submit-hover: #4a6e90;
+
+  /* Other */
+  --error-color: #ff4d4d; /* Kept from original */
+  --navbar-bg: #0b1413;
+  --footer-bg: #0b1413;
+  --scrollbar-track: #0b1413;
+  --scrollbar-thumb: linear-gradient(to bottom, #e8827b, #7b373f);
+  --scrollbar-thumb-hover: linear-gradient(to bottom, #f09890, #94424c);
+}
+
+/* Estilização da barra de rolagem (Scrollbar) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+  border: 3px solid var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #e8827b var(--scrollbar-track);
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #d8f3c5;
-  /* background: linear-gradient(45deg, #d8f3c5, #128c55); */
-  /* height: 100vh; */
-  background: #0c224a;
-  background: linear-gradient(45deg, #0c224a, #e8827b);
+  background: var(--background-gradient);
 }
 
+/* Barra de Navegação */
 .navbar-container {
-  background-color: #0b1413;
-  overflow: hidden;
+  background-color: var(--navbar-bg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 20px;
 }
-.navbar-container ul {
-  list-style-type: none;
-  margin: 5px;
-  padding: 5px;
+
+.navbar {
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 60px;
 }
 
-/* Responsividade básica */
-@media (max-width: 768px) {
-  .navbar-container ul {
-    flex-direction: column;
-    gap: 0;
-    padding: 0;
-  }
-  .navbar-container ul li a {
-    padding: 10px 8px;
-    font-size: 1rem;
-  }
-  main,
-  header,
-  footer {
-    padding: 8px;
-  }
+.navbar-brand {
+  color: var(--text-primary);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1.5rem;
+  text-decoration: none;
+  text-shadow: none;
+  padding: 14px 16px;
+  transition:
+    background-color 0.3s,
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 
-@media (max-width: 480px) {
-  body {
-    font-size: 15px;
-  }
-  .navbar-container ul li a {
-    padding: 8px 4px;
-    font-size: 0.95rem;
-  }
+.navbar-brand:hover {
+  color: var(--text-accent-hover);
+  text-shadow: none;
+  background-color: #0d1817;
+  transform: scale(1.07) translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  transition:
+    background-color 0.3s,
+    transform 0.3s,
+    box-shadow 0.3s;
+  
 }
 
-.navbar-container ul li a {
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links a,
+.nav-auth-link {
   display: block;
-  color: white;
+  color: var(--text-primary);
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -64,41 +133,245 @@ body {
     background-color 0.3s,
     transform 0.3s,
     box-shadow 0.3s;
+  text-shadow: none;
 }
 
-.navbar-container ul li a:hover {
+.nav-links a:hover,
+.nav-auth-link:hover {
   background-color: #0d1817;
   transform: scale(1.07) translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
 }
 
-.navbar-container ul li a:active {
+.nav-links a:active,
+.nav-auth-link:active {
   transform: scale(0.97);
 }
 
+.nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: var(--text-primary);
+}
+
+/* User Menu Dropdown */
+.user-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.user-menu-button {
+  background-color: transparent;
+  color: var(--text-primary);
+  padding: 12px 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  font-family: "JetBrains Mono", monospace;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.user-menu-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.arrow-down {
+  border: solid var(--text-primary);
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  transition: transform 0.3s;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--navbar-bg);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  border-radius: 8px;
+  overflow: hidden;
+  right: 0;
+  margin-top: 10px;
+  border: 1px solid var(--panel-border);
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+.dropdown-content a {
+  color: var(--text-primary);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-family: "JetBrains Mono", monospace;
+  text-shadow: none;
+}
+
+.dropdown-content a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--text-accent-hover);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .navbar {
+    position: relative;
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    top: 17px;
+    right: 20px;
+    z-index: 100;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .navbar-menu {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--navbar-bg);
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    transition: 0.3s;
+    gap: 20px;
+    z-index: 99;
+  }
+
+  .navbar-menu.active {
+    left: 0;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .nav-auth {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .user-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dropdown-content {
+    position: static;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    min-width: unset;
+  }
+
+  .dropdown-content a {
+    text-align: center;
+  }
+
+  main,
+  header,
+  footer {
+    padding: 8px;
+  }
+
+  /* Panels adjustments */
+  .auth-buttons-panel,
+  .form-panel {
+    padding: 25px;
+    width: 90%;
+  }
+
+  .about-panel {
+    margin: 20px auto;
+    padding: 20px;
+    width: 90%;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  .nav-links a {
+    font-size: 1.2rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Footer */
 footer {
   text-align: center;
   padding: 10px;
-  background-color: #0b1413;
-  color: white;
+  background-color: var(--footer-bg);
+  color: var(--text-primary);
   position: fixed;
   width: 100%;
   bottom: 0;
 }
 
 footer a {
-  color: #5b1166;
+  color: var(--text-accent);
   text-decoration: none;
 }
 
 footer a:hover {
   text-decoration: underline;
-  color: #3e0e4f;
+  color: var(--text-accent-hover);
 }
 
 /* Container para os botões com painel de fundo */
 .auth-buttons-panel {
-  background: rgba(11, 20, 19, 0.85);
+  background: var(--panel-background);
   backdrop-filter: blur(10px);
   padding: 50px 50px;
   border-radius: 20px;
@@ -107,26 +380,27 @@ footer a:hover {
   gap: 13px;
   flex-wrap: wrap;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--panel-border);
   flex-direction: column;
 }
 
 .about-panel {
-  background: rgba(11, 20, 19, 0.85);
+  background: var(--panel-background);
   backdrop-filter: blur(10px);
   padding: 40px;
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   max-width: 600px;
   margin: 40px auto;
-  color: #e8e8e8;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border: 1px solid var(--panel-border);
 }
 
+/* Botões */
 .login-btn {
-  background-color: rgba(123, 55, 63, 0.85);
+  background-color: var(--button-secondary-bg);
   border: none;
-  color: white;
+  color: var(--text-primary);
   padding: 10px 32px;
   text-align: center;
   text-decoration: none;
@@ -141,7 +415,7 @@ footer a:hover {
 }
 
 .login-btn:hover {
-  background-color: #94424c;
+  background-color: var(--button-secondary-hover);
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
@@ -151,9 +425,9 @@ footer a:hover {
 }
 
 .register-btn {
-  background-color: rgba(123, 55, 63, 0.85);
+  background-color: var(--button-primary-bg);
   border: none;
-  color: white;
+  color: var(--text-primary);
   padding: 10px 24px;
   text-align: center;
   text-decoration: none;
@@ -168,7 +442,7 @@ footer a:hover {
 }
 
 .register-btn:hover {
-  background-color: #94424c;
+  background-color: var(--button-primary-hover);
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
@@ -177,6 +451,17 @@ footer a:hover {
   transform: scale(0.95);
 }
 
+/* Mensagem de erro */
+.error_register_duplicated {
+  color: var(--error-color);
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Main Content */
 main {
   /* padding: 20px; */
   margin-bottom: 60px; /* Espaço para o footer fixo */
@@ -192,9 +477,10 @@ h2 {
   font-family: "JetBrains Mono", monospace;
   font-size: 30px;
   margin-bottom: 20px;
-  color: #330867;
+  color: var(--text-primary); /* Changed from dark purple */
 }
 
+/* Formulários */
 form {
   display: flex;
   flex-direction: column;
@@ -209,26 +495,26 @@ form {
 form label {
   margin-bottom: 5px;
   font-size: 25px;
-  color: #e8e8e8;
+  color: var(--text-primary);
 }
 
 form input {
   padding: 8px;
   margin-bottom: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--panel-border);
   border-radius: 4px;
   font-size: 18px;
   background: rgba(255, 255, 255, 0.1);
-  color: white;
+  color: var(--text-primary);
 }
 
 form input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-secondary);
 }
 
 form input[type="submit"] {
-  background-color: #4caf50;
-  color: white;
+  background-color: var(--button-submit-bg);
+  color: var(--text-primary);
   border: none;
   cursor: pointer;
   font-size: 20px;
@@ -238,7 +524,7 @@ form input[type="submit"] {
 }
 
 form input[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: var(--button-submit-hover);
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
@@ -249,19 +535,19 @@ form input[type="submit"]:active {
 
 a {
   font-family: "JetBrains Mono", monospace;
-  color: #e8827b;
+  color: var(--text-accent);
   text-decoration: none;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 a:hover {
   text-decoration: underline;
-  color: #f09890;
+  color: var(--text-accent-hover);
 }
 
 /* Container para formulários com painel de fundo */
 .form-panel {
-  background: rgba(11, 20, 19, 0.9);
+  background: var(--panel-background);
   backdrop-filter: blur(15px);
   padding: 40px;
   border-radius: 20px;
@@ -270,13 +556,13 @@ a:hover {
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--panel-border);
   max-width: 450px;
   width: 90%;
 }
 
 .form-panel h2 {
-  color: #ffffff;
+  color: var(--text-primary);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   margin: 0;
 }
