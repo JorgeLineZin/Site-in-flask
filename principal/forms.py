@@ -4,6 +4,7 @@ from wtforms.validators import DataRequired, Email, EqualTo, length, ValidationE
 from principal.models import User
 
 
+# Formulário de Login e Registro de Usuarios
 class FormLogin(FlaskForm):
     email = StringField("Email", validators=[DataRequired(), Email()])
     password = PasswordField("Password", validators=[DataRequired()])
@@ -36,7 +37,9 @@ class FormRegistro(FlaskForm):
             )
 
 
+# Formulário de Criação de Postagens
 class FormPost(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
     content = StringField("Content", validators=[DataRequired()])
     button_submit = SubmitField("Create Post")
+    button_exclude = SubmitField("Delete Post",)

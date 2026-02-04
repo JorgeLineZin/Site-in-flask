@@ -78,3 +78,13 @@ def perfil(id_user):
 def logout():
     logout_user()
     return redirect(url_for("index"))
+
+
+@app.route("/delete_post/<int:post_id>", methods=["POST"])
+@login_required
+def delete_post(post_id):
+    post = Post.query.get(post_id)
+    if post and post.id_user == current_user.id:
+        database.session.delete(post)
+        database.session.commit()
+    return redirect(url_for("perfil", id_user=current_user.id))
