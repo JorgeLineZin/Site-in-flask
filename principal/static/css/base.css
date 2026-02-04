@@ -111,7 +111,6 @@ body {
     background-color 0.3s,
     transform 0.3s,
     box-shadow 0.3s;
-  
 }
 
 .navbar-menu {
@@ -329,6 +328,7 @@ body {
     margin: 20px auto;
     padding: 20px;
     width: 90%;
+    flex-direction: column;
   }
 
   h2 {
@@ -384,17 +384,52 @@ footer a:hover {
   flex-direction: column;
 }
 
+/* About Page */
 .about-panel {
   background: var(--panel-background);
   backdrop-filter: blur(10px);
   padding: 40px;
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  max-width: 600px;
+  max-width: 1000px;
   margin: 40px auto;
   color: var(--text-primary);
   border: 1px solid var(--panel-border);
+  display: flex;
+  gap: 40px;
+  line-height: 1.8;
 }
+
+.about-group {
+    flex: 1;
+}
+
+.about-group h1, .about-group h2 {
+    color: var(--text-accent);
+    border-bottom: 2px solid var(--panel-border);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.about-group p {
+  color: var(--text-secondary);
+}
+
+.tech-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.tech-list li {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 3px solid var(--text-accent);
+}
+
+
 
 /* Botões */
 .login-btn {
@@ -557,8 +592,6 @@ a:hover {
   align-items: center;
   gap: 20px;
   border: 1px solid var(--panel-border);
-  max-width: 450px;
-  width: 90%;
 }
 
 .form-panel h2 {
@@ -569,4 +602,126 @@ a:hover {
 
 .form-panel form {
   width: 100%;
+}
+
+/* Profile Page Styles */
+.profile-panel {
+  color: var(--text-primary);
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  width: 100%;
+}
+
+.profile-panel h1 {
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.post-form {
+  max-width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-control-label {
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.form-control {
+  padding: 12px;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  font-family: "JetBrains Mono", monospace;
+  resize: vertical;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--text-accent);
+  box-shadow: 0 0 8px rgba(232, 168, 123, 0.5);
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-family: "JetBrains Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--button-submit-bg);
+  color: var(--text-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--button-submit-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.posts-list {
+  margin-top: 40px;
+}
+
+.posts-list h2 {
+  border-bottom: 2px solid var(--panel-border);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.post {
+  background: var(--panel-background);
+  border: 1px solid var(--panel-border);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.post h3 {
+  color: var(--text-accent);
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.post p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.logout-link {
+  display: block;
+  text-align: center;
+  margin-top: 30px;
+  padding: 10px;
+  background: var(--button-secondary-bg);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.logout-link:hover {
+  background-color: var(--button-secondary-hover);
+  text-decoration: none;
 }

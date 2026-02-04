@@ -1,18 +1,49 @@
-{% extends 'base.html' %}
-
-{% block title %}
-    About Us
-{% endblock %}
-
-{% block main_content %}
+{% extends 'base.html' %} {% block title %} About Us {% endblock %} {% block
+main_content %}
 <div class="about-panel">
-    <h1>About Us</h1>
-    <p>Welcome to my website!</p>
+  <div class="about-group">
+    <h1>Sobre o Projeto</h1>
     <p>
-        This is a simple website built with Flask.<br><br>
-        This project aims to demonstrate the basics of web development using the Flask framework.<br><br>
-        I created this website with the intention of learning more about databases in web development.
+      Bem-vindo ao meu site! Este é um projeto de demonstração construído com o
+      framework Flask em Python, projetado para mostrar um sistema de blog
+      simples com autenticação de usuário, criação de posts e perfis de usuário.
     </p>
+    <p>
+      O principal objetivo é aplicar e aprofundar os conhecimentos em
+      desenvolvimento web back-end, incluindo o manuseio de bancos de dados com
+      SQLAlchemy, gerenciamento de sessões de usuário com Flask-Login e a
+      estruturação de uma aplicação Flask usando Blueprints.
     </p>
+    <p>
+      O front-end foi estilizado para ser moderno e responsivo, utilizando CSS
+      customizado com variáveis para um tema consistente e agradável, mesmo em
+      dispositivos móveis.
+    </p>
+  </div>
+
+  <div class="about-group">
+    <h2>Tecnologias Utilizadas</h2>
+    <ul class="tech-list">
+      <li><strong>Back-end:</strong> Python, Flask, SQLAlchemy, Flask-Login</li>
+      <li><strong>Front-end:</strong> HTML, CSS, JavaScript</li>
+      <li><strong>Banco de Dados:</strong> SQLite (padrão)</li>
+      <li><strong>Estrutura:</strong> Blueprints do Flask para organização</li>
+    </ul>
+    <h2>Contato</h2>
+    <p>
+      Para sugestões, dúvidas ou apenas para dizer um "olá", sinta-se à vontade
+      para entrar em contato.
+    </p>
+    <p><strong>Email:</strong> jorgefeliperichtergusmao@gmail.com</p>
+    <p>
+      <strong>GitHub:</strong>
+      <a
+        href="https://github.com/JorgeLineZin"
+        target="_blank"
+        rel="noopener noreferrer"
+        >https://github.com/JorgeLineZin</a
+      >
+    </p>
+  </div>
 </div>
 {% endblock %}

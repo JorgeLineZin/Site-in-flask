@@ -1,13 +1,38 @@
-{% extends 'base.html' %} {% block title %} {{ username.name }}'s Profile {%
+{% extends 'base.html' %} {% block title %} Perfil de {{ username.name }} {%
 endblock %} {% block main_content %}
-<h1>Perfil de {{ username.name }}</h1>
+<div class="profile-panel">
+  <h1>Perfil de {{ username.name }}</h1>
 
-{% for posts in username.posts %}
-<div class="post">
-  <h2>{{ posts.title }}</h2>
-  <p>{{ posts.content }}</p>
+  {% if current_user.is_authenticated and current_user.id == username.id %}
+  <div class="form-panel">
+    <form method="POST" action="" class="post-form">
+      {{ form_post.csrf_token }}
+      <h2>Nova Publicação</h2>
+      <div class="form-group">
+        {{ form_post.title.label(class="form-control-label") }} {{
+        form_post.title(class="form-control") }}
+      </div>
+      <div class="form-group">
+        {{ form_post.content.label(class="form-control-label") }} {{
+        form_post.content(class="form-control", rows="5") }}
+      </div>
+      {{ form_post.button_submit(class="btn btn-primary") }}
+    </form>
+  </div>
+  {% endif %}
+
+  <div class="posts-list">
+    <h2>Publicações</h2>
+    {% for posts in username.posts %}
+    <div class="post">
+      <h3>{{ posts.title }}</h3>
+      <p>{{ posts.content }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if current_user.is_authenticated and current_user.id == username.id %}
+  <a href="{{ url_for('logout') }}" class="logout-link">logout</a>
+  {% endif %}
 </div>
-{% endfor %}
-
-<a href="{{ url_for('logout') }}">logout</a>
 {% endblock %}
